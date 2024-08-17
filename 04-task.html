@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 04</title>
+    <style>
+       body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        td, th {
+            padding: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Месяц</th>
+                <th>Количество</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+            <!-- Здесь будет динамически добавлен контент -->
+        </tbody>
+    </table>
+
+    <script>
+        /*
+        Задание:
+        Создайте шаблон и выведите содержимое массива source в таблице на текущей странице.
+        Свойство month должно выводиться в первый столбец, а свойство amount во второй столбец таблицы.
+        Количество строк таблицы должно соответствовать количеству элементов массива source. Используйте любой удобный способ работы с шаблонами.
+        */
+
+        let source = [
+            {
+                month: "Январь",
+                amount: 20
+            },
+            {
+                month: "Февраль",
+                amount: 140
+            },
+            {
+                month: "Март",
+                amount: 115
+            },
+            {
+                month: "Апрель",
+                amount: 100
+            },
+            {
+                month: "Март",
+                amount: 80
+            },
+            {
+                month: "Июнь",
+                amount: 90
+            },
+            {
+                month: "Июль",
+                amount: 100
+            }
+        ];
+        
+        // Ссылка на элемент tbody, где будем добавлять строки
+        let tableBody = document.getElementById('table-body');
+
+         // Проходим по каждому элементу массива и добавляем строку в таблицу
+         source.forEach(item => {
+            let row = document.createElement('tr'); // создаем новую строку
+            let monthCell = document.createElement('td'); // создаем ячейку для месяца
+            let amountCell = document.createElement('td'); // создаем ячейку для количества
+
+            // Заполняем ячейки значениями
+            monthCell.textContent = item.month;
+            amountCell.textContent = item.amount;
+
+            // Добавляем ячейки в строку
+            row.appendChild(monthCell);
+            row.appendChild(amountCell);
+
+            // Добавляем строку в таблицу
+            tableBody.appendChild(row);
+        });
+    </script>
+</body>
+
+</html>
